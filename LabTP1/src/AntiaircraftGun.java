@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 public class AntiaircraftGun {
 
 	private int StartX;
@@ -18,6 +17,7 @@ public class AntiaircraftGun {
     public boolean FrontArmor;// передняя броня
     public boolean MuzzleBraker;// дульный тормоз
     public boolean Radar;//радар
+    
     public AntiaircraftGun(int maxSped ,float weight,Color mainColor, Color dopColor,
         boolean frontArmor, boolean muzzleBraker, boolean radar)
     {
@@ -29,6 +29,7 @@ public class AntiaircraftGun {
         MuzzleBraker = muzzleBraker;
         Radar = radar;
     }
+    
     public void SetPosition(int x, int y, int width, int height)
     {
         StartX = x;
@@ -36,6 +37,7 @@ public class AntiaircraftGun {
         PictureWight = width;
         PictureHight = height;
     }
+    
     public void MoveGun(Direction direction)
     {
         float step = MaxSpeed * 100 / Weight;
@@ -64,14 +66,12 @@ public class AntiaircraftGun {
                 {
                     StartY += step;
                 }
-                break;
-                    
+                break;              
         }
-
     }
+   
     public void numberOfGuns(HardDirection direction)
-    {
-        
+    {      
         switch (direction)
         {
             case Two:
@@ -82,23 +82,18 @@ public class AntiaircraftGun {
                 break;
             case Six:
             	countGun=6;
-                break;
-            
-                    
+                break;                                
         }
 
     }
     public void DrawGun(Graphics g)
     {
-
         g.setColor(MainColor);
         
         int [] trapX= {StartX-40,StartX+40,StartX+45,StartX-45};
         int [] trapY= {StartY+10,StartY+10,StartY+25,StartY+25};
         g.fillPolygon( trapX,trapY,trapX.length);
-
-        
-
+       
         g.setColor(Color.BLACK);
         g.fillOval( StartX - 30, StartY + 20, 15, 15);
         g.fillOval( StartX + 20, StartY + 20, 15, 15);
@@ -126,43 +121,20 @@ public class AntiaircraftGun {
 	        }
 	        g.setColor(Color.BLACK);
 	        StartGY+=10;
-	        StartGX+=10;
-	        
-        }
-        
-        
-
+	        StartGX+=10;	        
+        }              
         if (Radar)
-        {
-           
+        {          
             g.fillArc((int)StartX + 10, (int)StartY - 25, 10, 10, 250, 180);
         }
 
         if (FrontArmor)
         {
-            g.setColor(DopColor);
-            
+            g.setColor(DopColor);            
             int [] armorX= {StartX,StartX+20,StartX+35,StartX+15};
             int [] armorY= {StartY-15,StartY-15,StartY+10,StartY+10};
             g.fillPolygon( armorX,armorY,armorX.length);
-        }
-        /*if (MuzzleBraker)
-        {
-            g.setColor(Color.GRAY);
-            
-            int [] mBX= {StartX+35,StartX+45,StartX+40,StartX+50};
-            int [] mBY= {StartY-25,StartY-35,StartY-20,StartY-30};
-            g.fillPolygon( mBX,mBY,mBX.length);
-        }*/
-
-        
-            
-        
-        
-
-        
-
+        }       
     }
-
 }
 

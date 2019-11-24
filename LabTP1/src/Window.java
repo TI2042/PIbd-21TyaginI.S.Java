@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -12,9 +11,6 @@ public class Window {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -27,36 +23,25 @@ public class Window {
 			}
 		});
 	}
-
-	/**
-	 * Create the application.
-	 */
+	
 	public Window() {
 		initialize();
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 830, 622);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		
+				
 		AntiaircraftGun gun = new AntiaircraftGun(100 + (int)(Math.random() * ((300 - 100) + 1)),1000 + (int)(Math.random() * ((2000 - 1000) + 1)), Color.GREEN, Color.GRAY, true,true,true);
 		JPanel panel = new GunPanel(gun);
 		panel.setBounds(12, 13, 550, 500);
 				
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
+			public void actionPerformed(ActionEvent e) {								
 				frame.getContentPane().add(panel);
-				Random rnd = new Random();
-				
 	            gun.SetPosition(10 + (int)(Math.random() * ((100 - 10) + 1)),10 + (int)(Math.random() * ((100 - 10) + 1)), 650, 550);
 	            panel.repaint();
 			}
@@ -107,8 +92,7 @@ public class Window {
 		JButton btnGuns2 = new JButton("2 guns");
 		btnGuns2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gun.numberOfGuns(HardDirection.Two);
-				
+				gun.numberOfGuns(HardDirection.Two);			
 			}
 		});
 		btnGuns2.setBounds(634, 132, 97, 25);
