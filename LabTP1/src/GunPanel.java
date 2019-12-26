@@ -1,22 +1,29 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
 import javax.swing.JPanel;
-import javax.swing.Spring;
 
 public class GunPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	AntiaircraftGun gun;
+	private Transport gun;
+	private IGuns guns;
 	
-	public GunPanel(AntiaircraftGun antiGun) 
-	{
-		gun = antiGun;		
+	public void setGun(Transport gun) {
+		this.gun = gun;
+	}
+	
+	public void setGuns(IGuns guns) {
+		this.guns = guns;
 	}
 
     public void paint(Graphics g) {
 		super.paint(g);	
-		gun.DrawGun(g);
-	}
-   
+		
+		if(gun != null && guns == null)
+			gun.DrawGun(g);
+		else if(gun != null && guns != null) {
+			gun.DrawGun(g);
+			guns.PrintGuns( HardDirection.Six,g, Color.green);
+		}
+    }
 }
